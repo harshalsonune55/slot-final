@@ -36,6 +36,8 @@ export const api = {
   createOrder:      (body)     => apiFetch("/api/payment/create-order", { method: "POST", body: JSON.stringify(body) }, getToken()),
   verifyPayment:    (body)     => apiFetch("/api/payment/verify",        { method: "POST", body: JSON.stringify(body) }, getToken()),
   getPayments:      ()         => apiFetch("/api/payment", {}, getToken()),
+
+  generateBotLinkCode: ()      => apiFetch("/api/bot/link-code", { method: "POST" }, getToken()),
 };
 
 // Admin API

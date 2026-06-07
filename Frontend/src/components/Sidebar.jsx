@@ -18,7 +18,7 @@ export default function Sidebar({ open, setOpen }) {
 
   return (
     <div
-      className={`bg-white h-screen shadow transition-all duration-300
+      className={`bg-white dark:bg-gray-900 h-screen shadow dark:border-r dark:border-gray-800 transition-all duration-300
       ${open ? "w-64" : "w-20"} flex flex-col`}
     >
       {/* TOP */}
@@ -29,7 +29,7 @@ export default function Sidebar({ open, setOpen }) {
           </div>
           {open && <span className="font-bold text-green-600 text-lg">Slot</span>}
         </div>
-        <button onClick={() => setOpen(!open)} className="text-gray-500">
+        <button onClick={() => setOpen(!open)} className="text-gray-500 dark:text-gray-400">
           {open ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
         </button>
       </div>
@@ -84,7 +84,13 @@ export default function Sidebar({ open, setOpen }) {
 
       {/* SETTINGS */}
       <div className="mt-auto px-3 mb-6">
-        <NavItem icon={<Settings size={20} />} text="Settings" open={open} />
+        <NavItem
+          icon={<Settings size={20} />}
+          text="Settings"
+          open={open}
+          active={location.pathname === "/settings"}
+          onClick={() => navigate("/settings")}
+        />
       </div>
     </div>
   );
@@ -95,7 +101,7 @@ function NavItem({ icon, text, open, active, onClick }) {
     <div
       onClick={onClick}
       className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer
-      ${active ? "bg-green-100 text-green-600" : "text-gray-600 hover:bg-gray-100"}`}
+      ${active ? "bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400" : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800"}`}
     >
       {icon}
       {open && <span className="text-sm font-medium">{text}</span>}

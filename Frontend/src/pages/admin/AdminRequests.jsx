@@ -11,10 +11,10 @@ import {
 const STATUSES = ["Pending Payment", "Pending", "In Progress", "Completed"];
 
 const STATUS_STYLE = {
-  "Pending Payment": "bg-red-100 text-red-600",
-  "Pending":         "bg-orange-100 text-orange-600",
-  "In Progress":     "bg-blue-100 text-blue-600",
-  "Completed":       "bg-green-100 text-green-600",
+  "Pending Payment": "bg-red-100 dark:bg-red-500/15 text-red-600 dark:text-red-400",
+  "Pending":         "bg-orange-100 dark:bg-orange-500/15 text-orange-600 dark:text-orange-400",
+  "In Progress":     "bg-blue-100 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400",
+  "Completed":       "bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400",
 };
 
 const STATUS_ICON = {
@@ -63,7 +63,7 @@ export default function AdminRequests() {
   });
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 dark:bg-gray-950 min-h-screen transition-colors">
       <div className="fixed left-0 top-0 h-screen z-10">
         <AdminSidebar open={open} setOpen={setOpen} />
       </div>
@@ -76,12 +76,12 @@ export default function AdminRequests() {
           {/* HEADER ROW */}
           <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
             <div className="flex items-center gap-3">
-              <div className="bg-green-100 text-green-600 p-3 rounded-lg">
+              <div className="bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400 p-3 rounded-lg">
                 <ClipboardList size={22} />
               </div>
               <div>
-                <h1 className="text-xl font-semibold">Assignment Requests</h1>
-                <p className="text-gray-500 text-sm">{assignments.length} total requests</p>
+                <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">Assignment Requests</h1>
+                <p className="text-gray-500 dark:text-gray-400 text-sm">{assignments.length} total requests</p>
               </div>
             </div>
 
@@ -92,14 +92,14 @@ export default function AdminRequests() {
                 placeholder="Search by title or student..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="border rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400 w-64"
+                className="border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400 w-64"
               />
 
               {/* Filter */}
               <select
                 value={filter}
                 onChange={(e) => setFilter(e.target.value)}
-                className="border rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400"
+                className="border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 rounded-lg px-4 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400"
               >
                 <option value="All">All Status</option>
                 {STATUSES.map((s) => <option key={s}>{s}</option>)}
@@ -113,9 +113,9 @@ export default function AdminRequests() {
               <Loader size={32} className="text-green-500 animate-spin" />
             </div>
           ) : filtered.length === 0 ? (
-            <div className="bg-white rounded-xl shadow p-16 text-center">
-              <ClipboardList size={48} className="mx-auto text-gray-300 mb-4" />
-              <p className="text-gray-500">No requests found.</p>
+            <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-16 text-center">
+              <ClipboardList size={48} className="mx-auto text-gray-300 dark:text-gray-700 mb-4" />
+              <p className="text-gray-500 dark:text-gray-400">No requests found.</p>
             </div>
           ) : (
             <div className="space-y-4">
@@ -145,7 +145,7 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
     new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 
   return (
-    <div className="bg-white rounded-xl shadow overflow-hidden">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow overflow-hidden">
 
       {/* MAIN ROW */}
       <div className="p-6">
@@ -154,13 +154,13 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
           {/* LEFT — assignment info */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-3 mb-2 flex-wrap">
-              <h3 className="font-semibold text-lg">{title}</h3>
-              <span className="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">{subject}</span>
+              <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">{title}</h3>
+              <span className="bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 text-xs px-2 py-1 rounded-full">{subject}</span>
             </div>
 
-            <p className="text-gray-500 text-sm line-clamp-2 mb-3">{description}</p>
+            <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-2 mb-3">{description}</p>
 
-            <div className="flex gap-4 text-xs text-gray-400 flex-wrap">
+            <div className="flex gap-4 text-xs text-gray-400 dark:text-gray-500 flex-wrap">
               <span className="flex items-center gap-1">
                 <Calendar size={12} />
                 Submitted {fmt(createdAt)}
@@ -173,11 +173,11 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
               )}
               {payment && (
                 <span className={`flex items-center gap-1 font-medium ${
-                  payment.status === "paid" ? "text-green-600" : "text-red-500"
+                  payment.status === "paid" ? "text-green-600 dark:text-green-400" : "text-red-500 dark:text-red-400"
                 }`}>
                   <CreditCard size={12} />
                   Payment: {payment.status === "paid"
-                    ? `Paid ₹${Math.round(payment.amount / 100)}`
+                    ? `Paid AED ${Math.round(payment.amount / 100)}`
                     : "Unpaid"}
                 </span>
               )}
@@ -199,7 +199,7 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
                 value={status}
                 onChange={(e) => onStatusChange(_id, e.target.value)}
                 disabled={isUpdating}
-                className="border rounded-lg pl-3 pr-8 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400 appearance-none cursor-pointer disabled:opacity-50"
+                className="border border-gray-300 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-100 rounded-lg pl-3 pr-8 py-2 text-sm outline-none focus:ring-2 focus:ring-green-400 appearance-none cursor-pointer disabled:opacity-50"
               >
                 {STATUSES.map((s) => (
                   <option key={s} value={s}>{s}</option>
@@ -209,14 +209,14 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
             </div>
 
             {isUpdating && (
-              <span className="text-xs text-green-600 flex items-center gap-1">
+              <span className="text-xs text-green-600 dark:text-green-400 flex items-center gap-1">
                 <Loader size={12} className="animate-spin" /> Updating...
               </span>
             )}
 
             <button
               onClick={() => setExpanded(!expanded)}
-              className="text-xs text-green-600 hover:underline"
+              className="text-xs text-green-600 dark:text-green-400 hover:underline"
             >
               {expanded ? "Hide details" : "View details"}
             </button>
@@ -227,12 +227,12 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
 
       {/* EXPANDED — student details */}
       {expanded && (
-        <div className="border-t bg-gray-50 px-6 py-5">
+        <div className="border-t border-gray-200 dark:border-gray-800 bg-gray-50 dark:bg-gray-800/50 px-6 py-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
             {/* Student info */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Student Info</p>
+              <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-3">Student Info</p>
               <div className="space-y-2">
                 <InfoRow icon={<User size={14} />}         label="Name"       value={user?.name || "—"} />
                 <InfoRow icon={<Mail size={14} />}         label="Email"      value={user?.email || "—"} />
@@ -244,12 +244,12 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
 
             {/* Assignment details + files */}
             <div>
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-3">Full Description</p>
-              <p className="text-sm text-gray-600 leading-relaxed whitespace-pre-wrap">{description}</p>
+              <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-3">Full Description</p>
+              <p className="text-sm text-gray-600 dark:text-gray-300 leading-relaxed whitespace-pre-wrap">{description}</p>
 
               {files?.length > 0 && (
                 <div className="mt-4">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Attachments</p>
+                  <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wide mb-2">Attachments</p>
                   <div className="space-y-1">
                     {files.map((f, i) => (
                       <a
@@ -257,7 +257,7 @@ function RequestCard({ assignment, onStatusChange, isUpdating }) {
                         href={f.file_url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 text-sm text-green-600 hover:underline"
+                        className="flex items-center gap-2 text-sm text-green-600 dark:text-green-400 hover:underline"
                       >
                         📎 {f.file_name}
                       </a>

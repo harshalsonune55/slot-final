@@ -10,6 +10,7 @@ import authRoutes from "./routes/auth.js";
 import assignmentRoutes from "./routes/assignments.js";
 import paymentRoutes from "./routes/payment.js";
 import adminRoutes from "./routes/admin.js";
+import botRoutes from "./routes/bot.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -33,6 +34,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/payment", paymentRoutes);
 app.use("/api/admin", adminRoutes);
+app.use("/api/bot", botRoutes);
 
 // Connect to MongoDB then start server
 mongoose

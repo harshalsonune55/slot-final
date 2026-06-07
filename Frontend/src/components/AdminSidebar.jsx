@@ -22,7 +22,7 @@ export default function AdminSidebar({ open, setOpen }) {
 
   return (
     <div
-      className={`bg-gray-900 h-screen shadow-xl transition-all duration-300
+      className={`bg-gray-900 dark:bg-gray-950 dark:border-r dark:border-gray-800 h-screen shadow-xl transition-all duration-300
       ${open ? "w-64" : "w-20"} flex flex-col`}
     >
       {/* TOP */}

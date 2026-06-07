@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema({
   branch:        { type: String, default: "" },
   year:          { type: String, default: "" },
   referral_code: { type: String, default: "" },
+  telegram_id:   { type: String, default: null, index: true, unique: true, sparse: true },
 }, { timestamps: true });
 
 userSchema.pre("save", async function (next) {

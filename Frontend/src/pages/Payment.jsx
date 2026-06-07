@@ -7,13 +7,13 @@ import Header from "../components/Header";
 import { CreditCard, Shield, CheckCircle, Loader } from "lucide-react";
 
 const PRICING = {
-  "Computer Science": 399,
-  "Mathematics":      199,
-  "Machine Learning": 499,
-  "Physics":          199,
-  "Chemistry":        199,
-  "Web Development":  399,
-  "Data Science":     449,
+  "Computer Science": 99,
+  "Mathematics":      49,
+  "Machine Learning": 119,
+  "Physics":          49,
+  "Chemistry":        49,
+  "Web Development":  99,
+  "Data Science":     109,
 };
 
 export default function Payment() {
@@ -43,7 +43,7 @@ export default function Payment() {
     return () => document.body.removeChild(script);
   }, [assignmentId]);
 
-  const price = PRICING[assignment?.subject] ?? 299;
+  const price = PRICING[assignment?.subject] ?? 69;
 
   async function handlePay() {
     setLoading(true);
@@ -95,7 +95,7 @@ export default function Payment() {
   }
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 dark:bg-gray-950 min-h-screen transition-colors">
       <div className="fixed left-0 top-0 h-screen">
         <Sidebar open={open} setOpen={setOpen} />
       </div>
@@ -104,42 +104,42 @@ export default function Payment() {
         <Header />
 
         <div className="p-8 flex justify-center">
-          <div className="bg-white rounded-xl shadow p-10 w-full max-w-2xl">
+          <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-10 w-full max-w-2xl">
 
             <div className="flex items-center gap-3 mb-6">
-              <div className="bg-green-100 text-green-600 p-3 rounded-lg">
+              <div className="bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400 p-3 rounded-lg">
                 <CreditCard size={22} />
               </div>
-              <h1 className="text-2xl font-semibold">Complete Payment</h1>
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">Complete Payment</h1>
             </div>
 
             {fetchError ? (
-              <p className="text-red-500 text-sm bg-red-50 p-3 rounded-lg mb-6">{fetchError}</p>
+              <p className="text-red-500 dark:text-red-400 text-sm bg-red-50 dark:bg-red-500/10 p-3 rounded-lg mb-6">{fetchError}</p>
             ) : !assignment ? (
               <div className="flex justify-center py-10">
                 <Loader size={28} className="text-green-500 animate-spin" />
               </div>
             ) : (
-              <div className="bg-gray-50 rounded-xl p-6 mb-8 border">
-                <p className="text-xs font-semibold text-green-600 uppercase tracking-wide mb-1">Assignment</p>
-                <h3 className="font-semibold text-lg">{assignment.title}</h3>
-                <span className="inline-block mt-2 bg-green-100 text-green-700 text-sm px-3 py-1 rounded-full">
+              <div className="bg-gray-50 dark:bg-gray-800/60 rounded-xl p-6 mb-8 border border-gray-200 dark:border-gray-700">
+                <p className="text-xs font-semibold text-green-600 dark:text-green-400 uppercase tracking-wide mb-1">Assignment</p>
+                <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">{assignment.title}</h3>
+                <span className="inline-block mt-2 bg-green-100 dark:bg-green-500/15 text-green-700 dark:text-green-400 text-sm px-3 py-1 rounded-full">
                   {assignment.subject}
                 </span>
                 {assignment.deadline && (
-                  <p className="text-gray-500 text-sm mt-2">
-                    Deadline: {new Date(assignment.deadline).toLocaleDateString("en-IN")}
+                  <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
+                    Deadline: {new Date(assignment.deadline).toLocaleDateString("en-AE")}
                   </p>
                 )}
               </div>
             )}
 
-            <div className="flex justify-between items-center border-t border-b py-4 mb-8">
-              <span className="text-gray-500">Service Fee</span>
-              <span className="text-3xl font-bold text-green-600">₹{price}</span>
+            <div className="flex justify-between items-center border-t border-b border-gray-200 dark:border-gray-800 py-4 mb-8">
+              <span className="text-gray-500 dark:text-gray-400">Service Fee</span>
+              <span className="text-3xl font-bold text-green-600 dark:text-green-400">AED {price}</span>
             </div>
 
-            <div className="space-y-3 mb-8 text-sm text-gray-500">
+            <div className="space-y-3 mb-8 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex items-center gap-2">
                 <CheckCircle size={16} className="text-green-500" />
                 Expert assigned within 2 hours of payment
@@ -159,12 +159,12 @@ export default function Payment() {
               disabled={loading || !assignment}
               className="w-full bg-green-600 text-white py-4 rounded-xl font-semibold text-lg hover:bg-green-700 transition disabled:opacity-60"
             >
-              {loading ? "Opening checkout..." : `Pay ₹${price} via Razorpay`}
+              {loading ? "Opening checkout..." : `Pay AED ${price} via Razorpay`}
             </button>
 
-            <div className="flex items-center justify-center gap-2 mt-4 text-gray-400 text-sm">
+            <div className="flex items-center justify-center gap-2 mt-4 text-gray-400 dark:text-gray-500 text-sm">
               <Shield size={14} />
-              Secured by Razorpay · UPI · Cards · NetBanking · Wallets
+              Secured by Razorpay · International Cards · Apple Pay · Google Pay
             </div>
 
           </div>

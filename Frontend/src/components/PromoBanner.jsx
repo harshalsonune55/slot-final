@@ -8,7 +8,7 @@ export default function PromoBanner() {
   if (!show) return null;
 
   return (
-    <div className="w-full bg-green-600 text-white px-6 py-3 flex items-center justify-center relative">
+    <div className="w-full bg-green-600 dark:bg-green-700 text-white px-6 py-3 flex items-center justify-center relative">
 
       <div className="flex items-center gap-3 font-medium text-sm">
 

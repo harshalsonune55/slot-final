@@ -15,12 +15,13 @@ pipeline {
 
         stage('Build & Deploy') {
             steps {
-                // Backend/.env and the root .env (frontend build args) are expected
-                // to already exist on the Jenkins agent, e.g. under
-                // /var/lib/jenkins/slot-env/.env and /var/lib/jenkins/slot-env/backend.env
+                // Backend/.env, Bot/.env and the root .env (frontend build args) are
+                // expected to already exist on the Jenkins agent, e.g. under
+                // /var/lib/jenkins/slot-env/.env, backend.env and bot.env
                 sh '''
                     cp /var/lib/jenkins/slot-env/.env .env
                     cp /var/lib/jenkins/slot-env/backend.env Backend/.env
+                    cp /var/lib/jenkins/slot-env/bot.env Bot/.env
 
                     docker compose build
                     docker compose up -d
@@ -32,7 +33,7 @@ pipeline {
 
     post {
         always {
-            sh 'rm -f .env Backend/.env'
+            sh 'rm -f .env Backend/.env Bot/.env'
         }
         failure {
             echo 'Build or deploy failed — check the console output above.'

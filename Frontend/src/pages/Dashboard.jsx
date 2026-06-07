@@ -59,7 +59,7 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 dark:bg-gray-950 min-h-screen transition-colors">
         <PromoBanner />
 
     {/* Fixed Sidebar */}
@@ -77,21 +77,21 @@ export default function Dashboard() {
 
           {/* HERO SECTION */}
 
-          <div className="bg-green-50 rounded-xl p-10 grid grid-cols-2 gap-10 items-center">
+          <div className="bg-green-50 dark:bg-green-500/10 rounded-xl p-10 grid grid-cols-2 gap-10 items-center">
 
             <div>
 
-              <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm">
+              <span className="bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400 px-3 py-1 rounded-full text-sm">
                 #1 Tech Assignment Platform
               </span>
 
-              <h1 className="text-4xl font-bold mt-4 leading-tight">
+              <h1 className="text-4xl font-bold mt-4 leading-tight text-gray-900 dark:text-gray-100">
                 We Provide
-                <span className="text-green-600"> Tech Solutions </span>
+                <span className="text-green-600 dark:text-green-400"> Tech Solutions </span>
                 For Your Assignments
               </h1>
 
-              <p className="text-gray-600 mt-4 max-w-xl">
+              <p className="text-gray-600 dark:text-gray-300 mt-4 max-w-xl">
                 From coding challenges to full-stack projects —
                 our expert team delivers accurate, well-documented
                 tech solutions with 24/7 support.
@@ -103,7 +103,7 @@ export default function Dashboard() {
                   Submit Assignment →
                 </button>
 
-                <button onClick={() => navigate("/assignments")} className="border px-6 py-3 rounded-lg bg-white hover:bg-gray-50">
+                <button onClick={() => navigate("/assignments")} className="border border-gray-300 dark:border-gray-700 px-6 py-3 rounded-lg bg-white dark:bg-gray-900 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800">
                   View My Work
                 </button>
 
@@ -144,7 +144,7 @@ export default function Dashboard() {
 
           <div>
 
-            <h2 className="text-2xl font-semibold mb-6">
+            <h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
               Your Overview
             </h2>
 
@@ -180,15 +180,19 @@ export default function Dashboard() {
             </div>
 
           </div>
+
+          {/* TELEGRAM BOT LINKING */}
+          <TelegramLinkCard />
+
           {/* HOW IT WORKS */}
 
 <div>
 
-<h2 className="text-2xl font-semibold">
+<h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
   How It Works
 </h2>
 
-<p className="text-gray-500 mb-6">
+<p className="text-gray-500 dark:text-gray-400 mb-6">
   Get your solution in 4 simple steps
 </p>
 
@@ -232,14 +236,14 @@ export default function Dashboard() {
 
 <div>
 
-<h2 className="text-2xl font-semibold mb-6">
+<h2 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
   Recent Assignments
 </h2>
 
 {recentAssignments.length === 0 ? (
-  <div className="bg-white rounded-xl shadow p-10 text-center text-gray-400">
+  <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-10 text-center text-gray-400 dark:text-gray-500">
     No assignments yet.{" "}
-    <button onClick={() => navigate("/submit")} className="text-green-600 font-medium hover:underline">
+    <button onClick={() => navigate("/submit")} className="text-green-600 dark:text-green-400 font-medium hover:underline">
       Submit your first one →
     </button>
   </div>
@@ -273,11 +277,11 @@ export default function Dashboard() {
 
 <div className="mt-14">
 
-  <h2 className="text-2xl font-semibold">
+  <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
     Why Choose SolveIt?
   </h2>
 
-  <p className="text-gray-500 mb-8">
+  <p className="text-gray-500 dark:text-gray-400 mb-8">
     We're the most trusted tech assignment solution provider
   </p>
 
@@ -331,11 +335,11 @@ export default function Dashboard() {
   <div className="flex justify-between items-center mb-8">
 
     <div>
-      <h2 className="text-2xl font-semibold">
+      <h2 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">
         What Students Say
       </h2>
 
-      <p className="text-gray-500">
+      <p className="text-gray-500 dark:text-gray-400">
         Trusted by thousands of students worldwide
       </p>
     </div>
@@ -343,7 +347,7 @@ export default function Dashboard() {
     <div className="flex items-center gap-2 text-yellow-500 font-semibold">
       <Star size={20} fill="currentColor"/>
       4.9/5
-      <span className="text-gray-500 font-normal">
+      <span className="text-gray-500 dark:text-gray-400 font-normal">
         (1,200+ reviews)
       </span>
     </div>
@@ -381,7 +385,7 @@ export default function Dashboard() {
 
 <div className="mt-16">
 
-  <div className="bg-green-600 rounded-2xl text-white text-center py-14 px-8">
+  <div className="bg-green-600 dark:bg-green-700 rounded-2xl text-white text-center py-14 px-8">
 
     <h2 className="text-3xl font-bold mb-3">
       Ready to Ace Your Assignments?
@@ -394,7 +398,7 @@ export default function Dashboard() {
 
     <div className="flex justify-center gap-4 mt-8">
 
-      <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold flex items-center gap-2 hover:bg-gray-100">
+      <button className="bg-white text-black px-6 py-3 rounded-lg font-semibold flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-200">
         Get Started Now
         <ArrowRight size={18}/>
       </button>
@@ -425,6 +429,59 @@ export default function Dashboard() {
 
 
 
+function TelegramLinkCard() {
+  const [code, setCode] = useState(null);
+  const [expiresInMinutes, setExpiresInMinutes] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const generateCode = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const data = await api.generateBotLinkCode();
+      setCode(data.code);
+      setExpiresInMinutes(data.expiresInMinutes);
+    } catch (err) {
+      setError(err.message || "Could not generate a code. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="bg-white dark:bg-gray-900 rounded-xl p-8 shadow flex items-center justify-between gap-8">
+      <div>
+        <div className="flex items-center gap-2 text-green-600 dark:text-green-400 font-semibold">
+          <MessageCircle size={20} />
+          Slot Assistant on Telegram
+        </div>
+        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 max-w-xl">
+          Chat with our Telegram bot to check assignment status, ask questions,
+          submit new requests and pay — all from your phone. Generate a one-time
+          code below, then send <code className="bg-gray-100 dark:bg-gray-800 px-1 rounded">/link &lt;code&gt;</code> to the bot to connect your account.
+        </p>
+
+        {code && (
+          <div className="mt-4 inline-flex items-center gap-3 bg-green-50 dark:bg-green-500/10 border border-green-200 dark:border-green-500/20 rounded-lg px-4 py-2">
+            <span className="text-2xl font-mono font-bold tracking-widest text-green-700 dark:text-green-400">{code}</span>
+            <span className="text-xs text-gray-500 dark:text-gray-400">expires in {expiresInMinutes} min</span>
+          </div>
+        )}
+        {error && <p className="text-red-500 dark:text-red-400 text-sm mt-3">{error}</p>}
+      </div>
+
+      <button
+        onClick={generateCode}
+        disabled={loading}
+        className="bg-green-500 hover:bg-green-600 disabled:opacity-60 text-white px-6 py-3 rounded-lg font-semibold whitespace-nowrap"
+      >
+        {loading ? "Generating…" : code ? "Generate New Code" : "Link Telegram Bot"}
+      </button>
+    </div>
+  );
+}
+
 function TechCard({ icon, title, desc }) {
   return (
     <motion.div
@@ -433,18 +490,18 @@ function TechCard({ icon, title, desc }) {
   whileInView="visible"
   viewport={{ once: true }}
   {...cardHover}
-  className="bg-white p-5 rounded-xl shadow hover:shadow-md transition"
+  className="bg-white dark:bg-gray-900 p-5 rounded-xl shadow hover:shadow-md transition"
 >
 
-      <div className="text-green-500 mb-3">
+      <div className="text-green-500 dark:text-green-400 mb-3">
         {icon}
       </div>
 
-      <h3 className="font-semibold">
+      <h3 className="font-semibold text-gray-900 dark:text-gray-100">
         {title}
       </h3>
 
-      <p className="text-gray-500 text-sm mt-1">
+      <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
         {desc}
       </p>
 
@@ -455,38 +512,38 @@ function TechCard({ icon, title, desc }) {
 function StepCard({ step, title, desc, icon }) {
 
     return (
-  
+
         <motion.div
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
         {...cardHover}
-        className="bg-white rounded-xl shadow p-6"
+        className="bg-white dark:bg-gray-900 rounded-xl shadow p-6"
       >
-  
+
         <div className="flex items-center gap-3 mb-4">
-  
+
           <div className="w-10 h-10 bg-green-500 text-white rounded-full flex items-center justify-center font-semibold">
             {step}
           </div>
-  
-          <div className="text-green-500">
+
+          <div className="text-green-500 dark:text-green-400">
             {icon}
           </div>
-  
+
         </div>
-  
-        <h3 className="font-semibold text-lg">
+
+        <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
           {title}
         </h3>
-  
-        <p className="text-gray-500 text-sm mt-2">
+
+        <p className="text-gray-500 dark:text-gray-400 text-sm mt-2">
           {desc}
         </p>
-  
+
       </motion.div>
-  
+
     );
   }
   function AssignmentCard({
@@ -498,58 +555,58 @@ function StepCard({ step, title, desc, icon }) {
     due,
     desc
   }) {
-  
+
     const colorMap = {
-      green: "bg-green-100 text-green-600",
-      blue: "bg-blue-100 text-blue-600",
-      orange: "bg-orange-100 text-orange-600"
+      green: "bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400",
+      blue: "bg-blue-100 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400",
+      orange: "bg-orange-100 dark:bg-orange-500/15 text-orange-600 dark:text-orange-400"
     };
-  
+
     return (
-  
+
         <motion.div
         variants={fadeUp}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
-        
-        className="bg-white p-6 rounded-xl shadow"
+
+        className="bg-white dark:bg-gray-900 p-6 rounded-xl shadow"
       >
-  
+
         <div className="flex justify-between items-center mb-2">
-  
-          <h3 className="font-semibold text-lg">
+
+          <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
             {title}
           </h3>
-  
+
           <span className={`px-3 py-1 text-sm rounded-full ${colorMap[statusColor]}`}>
             {status}
           </span>
-  
+
         </div>
-  
-        <div className="flex gap-3 text-sm text-gray-500 mb-2">
-  
-          <span className="bg-gray-100 px-2 py-1 rounded">
+
+        <div className="flex gap-3 text-sm text-gray-500 dark:text-gray-400 mb-2">
+
+          <span className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">
             {subject}
           </span>
-  
+
           <span>
             Submitted {submitted}
           </span>
-  
+
           <span>
             Due {due}
           </span>
-  
+
         </div>
-  
-        <p className="text-gray-500 text-sm">
+
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
           {desc}
         </p>
-  
+
         </motion.div>
-  
+
     );
   }
 
@@ -587,39 +644,39 @@ function StepCard({ step, title, desc, icon }) {
   
     return (
   
-      <div className="bg-white rounded-xl shadow p-6 flex items-center gap-4 hover:shadow-md transition">
-  
-        <div className=" text-green-600 p-4 rounded-xl">
+      <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 flex items-center gap-4 hover:shadow-md transition">
+
+        <div className=" text-green-600 dark:text-green-400 p-4 rounded-xl">
           {icon}
         </div>
-  
+
         <div>
-  
+
           {loading ? (
-  
+
             <div className="animate-pulse">
-  
-              <div className="h-6 w-24 bg-gray-200 rounded mb-2"></div>
-              <div className="h-4 w-32 bg-gray-200 rounded"></div>
-  
+
+              <div className="h-6 w-24 bg-gray-200 dark:bg-gray-700 rounded mb-2"></div>
+              <div className="h-4 w-32 bg-gray-200 dark:bg-gray-700 rounded"></div>
+
             </div>
-  
+
           ) : (
-  
+
             <>
-              <h2 className="text-2xl font-bold ">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100">
                 {prefix}{Math.floor(count).toLocaleString()}{suffix}
               </h2>
-  
-              <p className="text-gray-500 mt-1">
+
+              <p className="text-gray-500 dark:text-gray-400 mt-1">
                 {label}
               </p>
             </>
-  
+
           )}
-  
+
         </div>
-  
+
       </div>
   
     );
@@ -630,26 +687,26 @@ function StepCard({ step, title, desc, icon }) {
 function TestimonialCard({ text, name, field }) {
     return (
   
-      <div className="bg-white rounded-xl shadow p-6">
-  
-        <Quote className="text-green-400 mb-4" size={24}/>
-  
-        <p className="text-gray-600 mb-6">
+      <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
+
+        <Quote className="text-green-400 dark:text-green-500 mb-4" size={24}/>
+
+        <p className="text-gray-600 dark:text-gray-300 mb-6">
           {text}
         </p>
-  
+
         <div className="flex justify-between items-center">
-  
+
           <div>
-  
-            <h4 className="font-semibold">
+
+            <h4 className="font-semibold text-gray-900 dark:text-gray-100">
               {name}
             </h4>
-  
-            <p className="text-gray-500 text-sm">
+
+            <p className="text-gray-500 dark:text-gray-400 text-sm">
               {field}
             </p>
-  
+
           </div>
   
           <div className="flex text-yellow-500">
@@ -674,25 +731,25 @@ function FeatureCard({ icon, title, desc }) {
         whileInView="visible"
         viewport={{ once: true }}
         {...cardHover}
-        className="bg-white rounded-xl shadow p-6 flex gap-4 items-start"
+        className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 flex gap-4 items-start"
       >
-  
-        <div className="bg-green-100 text-green-600 p-3 rounded-xl">
+
+        <div className="bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400 p-3 rounded-xl">
           {icon}
         </div>
-  
+
         <div>
-  
-          <h3 className="font-semibold text-lg">
+
+          <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">
             {title}
           </h3>
-  
-          <p className="text-gray-500 text-sm mt-1">
+
+          <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
             {desc}
           </p>
-  
+
         </div>
-  
+
       </motion.div>
   
     );
@@ -707,28 +764,28 @@ function OverviewCard({ title, value, subtitle, icon }) {
   whileInView="visible"
   viewport={{ once: true }}
   {...cardHover}
-  className="bg-white rounded-xl shadow p-6 flex justify-between items-center"
+  className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 flex justify-between items-center"
 >
 
       <div>
 
-        <p className="text-gray-500">
+        <p className="text-gray-500 dark:text-gray-400">
           {title}
         </p>
 
-        <h2 className="text-3xl font-bold mt-2">
+        <h2 className="text-3xl font-bold mt-2 text-gray-900 dark:text-gray-100">
           {value}
         </h2>
 
         {subtitle && (
-          <p className="text-gray-400 text-sm mt-1">
+          <p className="text-gray-400 dark:text-gray-500 text-sm mt-1">
             {subtitle}
           </p>
         )}
 
       </div>
 
-      <div className="bg-green-100 p-4 rounded-xl text-green-600">
+      <div className="bg-green-100 dark:bg-green-500/15 p-4 rounded-xl text-green-600 dark:text-green-400">
         {icon}
       </div>
 

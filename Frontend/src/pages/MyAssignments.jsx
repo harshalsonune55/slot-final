@@ -19,7 +19,7 @@ export default function MyAssignments() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 dark:bg-gray-950 min-h-screen transition-colors">
       <div className="fixed left-0 top-0 h-screen">
         <Sidebar open={open} setOpen={setOpen} />
       </div>
@@ -29,10 +29,10 @@ export default function MyAssignments() {
 
         <div className="p-8">
           <div className="flex items-center gap-3 mb-8">
-            <div className="bg-green-100 text-green-600 p-3 rounded-lg">
+            <div className="bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400 p-3 rounded-lg">
               <BookOpen size={22} />
             </div>
-            <h1 className="text-2xl font-semibold">My Assignments</h1>
+            <h1 className="text-2xl font-semibold text-gray-900 dark:text-gray-100">My Assignments</h1>
           </div>
 
           {loading ? (
@@ -40,13 +40,13 @@ export default function MyAssignments() {
               <Loader size={32} className="text-green-500 animate-spin" />
             </div>
           ) : error ? (
-            <div className="bg-red-50 border border-red-200 text-red-600 rounded-xl p-6 text-center">
+            <div className="bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-400 rounded-xl p-6 text-center">
               {error}
             </div>
           ) : assignments.length === 0 ? (
-            <div className="bg-white rounded-xl shadow p-16 text-center">
-              <BookOpen size={48} className="mx-auto text-gray-300 mb-4" />
-              <h3 className="text-lg font-semibold text-gray-600">No assignments yet</h3>
+            <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-16 text-center">
+              <BookOpen size={48} className="mx-auto text-gray-300 dark:text-gray-700 mb-4" />
+              <h3 className="text-lg font-semibold text-gray-600 dark:text-gray-300">No assignments yet</h3>
               <p className="text-gray-400 mt-1">Submit your first assignment to get started.</p>
             </div>
           ) : (
@@ -68,10 +68,10 @@ function AssignmentCard({ assignment }) {
   const { _id, title, subject, deadline, status, createdAt } = assignment;
 
   const statusConfig = {
-    "Pending Payment": { color: "bg-red-100 text-red-600",      icon: <CreditCard size={15} /> },
-    "Pending":         { color: "bg-orange-100 text-orange-600", icon: <Clock size={15} /> },
-    "In Progress":     { color: "bg-blue-100 text-blue-600",    icon: <Clock size={15} /> },
-    "Completed":       { color: "bg-green-100 text-green-600",  icon: <CheckCircle size={15} /> },
+    "Pending Payment": { color: "bg-red-100 dark:bg-red-500/15 text-red-600 dark:text-red-400",          icon: <CreditCard size={15} /> },
+    "Pending":         { color: "bg-orange-100 dark:bg-orange-500/15 text-orange-600 dark:text-orange-400", icon: <Clock size={15} /> },
+    "In Progress":     { color: "bg-blue-100 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400",       icon: <Clock size={15} /> },
+    "Completed":       { color: "bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400",   icon: <CheckCircle size={15} /> },
   };
 
   const cfg = statusConfig[status] || statusConfig["Pending"];
@@ -79,12 +79,12 @@ function AssignmentCard({ assignment }) {
   const fmt = (d) => new Date(d).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 
   return (
-    <div className="bg-white rounded-xl shadow p-6 flex justify-between items-center">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 flex justify-between items-center">
 
       <div>
-        <h3 className="font-semibold text-lg">{title}</h3>
-        <div className="flex gap-3 text-sm text-gray-500 mt-2 flex-wrap">
-          <span className="bg-gray-100 px-2 py-1 rounded">{subject || "—"}</span>
+        <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">{title}</h3>
+        <div className="flex gap-3 text-sm text-gray-500 dark:text-gray-400 mt-2 flex-wrap">
+          <span className="bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">{subject || "—"}</span>
           <span>Submitted {fmt(createdAt)}</span>
           {deadline && <span>Due {fmt(deadline)}</span>}
         </div>

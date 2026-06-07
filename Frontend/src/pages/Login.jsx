@@ -28,7 +28,7 @@ export default function Login() {
   }
 
   return (
-    <div className="flex min-h-screen bg-white">
+    <div className="flex min-h-screen bg-white dark:bg-gray-950 transition-colors">
 
       {/* LEFT */}
       <div className="w-full md:w-1/2 flex flex-col p-10">
@@ -40,11 +40,11 @@ export default function Login() {
 
         <form onSubmit={handleLogin} className="max-w-md">
 
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Sign in</h2>
-          <p className="text-gray-500 mb-6">Welcome back</p>
+          <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 mb-2">Sign in</h2>
+          <p className="text-gray-500 dark:text-gray-400 mb-6">Welcome back</p>
 
           {error && (
-            <p className="text-red-500 text-sm mb-4 bg-red-50 border border-red-200 p-3 rounded-lg">
+            <p className="text-red-500 text-sm mb-4 bg-red-50 dark:bg-red-500/10 border border-red-200 dark:border-red-500/30 p-3 rounded-lg">
               {error}
             </p>
           )}
@@ -52,7 +52,7 @@ export default function Login() {
           <input
             type="email"
             placeholder="Email"
-            className="w-full p-3 mb-4 border rounded-lg focus:ring-2 focus:ring-green-400 outline-none"
+            className="w-full p-3 mb-4 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 rounded-lg focus:ring-2 focus:ring-green-400 outline-none"
             onChange={(e) => setEmail(e.target.value)}
             required
           />
@@ -60,7 +60,7 @@ export default function Login() {
           <input
             type="password"
             placeholder="Password"
-            className="w-full p-3 mb-4 border rounded-lg focus:ring-2 focus:ring-green-400 outline-none"
+            className="w-full p-3 mb-4 border border-gray-300 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 dark:placeholder:text-gray-500 rounded-lg focus:ring-2 focus:ring-green-400 outline-none"
             onChange={(e) => setPassword(e.target.value)}
             required
           />
@@ -72,7 +72,7 @@ export default function Login() {
             {loading ? "Signing in..." : "Sign in"}
           </button>
 
-          <p className="text-sm text-gray-500 mt-4 text-center">
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 text-center">
             Don't have an account?{" "}
             <Link to="/register" className="text-green-500 font-medium">Sign up</Link>
           </p>
@@ -81,12 +81,12 @@ export default function Login() {
       </div>
 
       {/* RIGHT */}
-      <div className="hidden md:flex w-1/2 bg-green-50 items-center justify-center p-16">
+      <div className="hidden md:flex w-1/2 bg-green-50 dark:bg-green-500/10 items-center justify-center p-16">
         <div className="max-w-lg text-center">
-          <p className="text-2xl text-gray-700 leading-relaxed">
+          <p className="text-2xl text-gray-700 dark:text-gray-300 leading-relaxed">
             "Helping thousands of students ace their assignments with expert tech solutions."
           </p>
-          <div className="mt-6 text-gray-500">— Slot Platform</div>
+          <div className="mt-6 text-gray-500 dark:text-gray-400">— Slot Platform</div>
         </div>
       </div>
 

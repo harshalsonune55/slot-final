@@ -22,7 +22,7 @@ export default function AdminDashboard() {
   }, []);
 
   return (
-    <div className="bg-gray-100 min-h-screen">
+    <div className="bg-gray-100 dark:bg-gray-950 min-h-screen transition-colors">
       <div className="fixed left-0 top-0 h-screen z-10">
         <AdminSidebar open={open} setOpen={setOpen} />
       </div>
@@ -33,7 +33,7 @@ export default function AdminDashboard() {
         <div className="p-8 space-y-8">
 
           {/* WELCOME */}
-          <div className="bg-gradient-to-r from-green-600 to-green-700 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-green-600 to-green-700 dark:from-green-700 dark:to-green-800 rounded-2xl p-8 text-white">
             <h2 className="text-2xl font-bold mb-1">Welcome back, Admin</h2>
             <p className="text-green-100">Here's what's happening with your platform today.</p>
             <button
@@ -56,31 +56,31 @@ export default function AdminDashboard() {
                   icon={<BookOpen size={24} />}
                   label="Total Assignments"
                   value={stats?.totalAssignments ?? 0}
-                  color="bg-blue-100 text-blue-600"
+                  color="bg-blue-100 dark:bg-blue-500/15 text-blue-600 dark:text-blue-400"
                 />
                 <StatCard
                   icon={<Users size={24} />}
                   label="Total Students"
                   value={stats?.totalStudents ?? 0}
-                  color="bg-purple-100 text-purple-600"
+                  color="bg-purple-100 dark:bg-purple-500/15 text-purple-600 dark:text-purple-400"
                 />
                 <StatCard
                   icon={<CheckCircle size={24} />}
                   label="Completed"
                   value={stats?.completed ?? 0}
-                  color="bg-green-100 text-green-600"
+                  color="bg-green-100 dark:bg-green-500/15 text-green-600 dark:text-green-400"
                 />
                 <StatCard
                   icon={<IndianRupee size={24} />}
                   label="Total Revenue"
-                  value={`₹${(stats?.revenue ?? 0).toLocaleString("en-IN")}`}
-                  color="bg-yellow-100 text-yellow-600"
+                  value={`AED ${(stats?.revenue ?? 0).toLocaleString("en-AE")}`}
+                  color="bg-yellow-100 dark:bg-yellow-500/15 text-yellow-600 dark:text-yellow-400"
                 />
               </div>
 
               {/* STATUS BREAKDOWN */}
               <div>
-                <h2 className="text-lg font-semibold mb-4">Assignment Status Breakdown</h2>
+                <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Assignment Status Breakdown</h2>
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
                   <StatusCard label="Pending Payment" count={stats?.pendingPayment ?? 0} color="bg-red-500" />
                   <StatusCard label="Pending Review"  count={stats?.pending       ?? 0} color="bg-orange-400" />
@@ -91,7 +91,7 @@ export default function AdminDashboard() {
 
               {/* QUICK ACTIONS */}
               <div>
-                <h2 className="text-lg font-semibold mb-4">Quick Actions</h2>
+                <h2 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Quick Actions</h2>
                 <div className="grid grid-cols-2 gap-5">
                   <ActionCard
                     title="Review Pending Requests"
@@ -121,11 +121,11 @@ export default function AdminDashboard() {
 
 function StatCard({ icon, label, value, color }) {
   return (
-    <div className="bg-white rounded-xl shadow p-6 flex items-center gap-4">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6 flex items-center gap-4">
       <div className={`p-3 rounded-xl ${color}`}>{icon}</div>
       <div>
-        <p className="text-gray-500 text-sm">{label}</p>
-        <h3 className="text-2xl font-bold mt-0.5">{value}</h3>
+        <p className="text-gray-500 dark:text-gray-400 text-sm">{label}</p>
+        <h3 className="text-2xl font-bold mt-0.5 text-gray-900 dark:text-gray-100">{value}</h3>
       </div>
     </div>
   );
@@ -133,19 +133,19 @@ function StatCard({ icon, label, value, color }) {
 
 function StatusCard({ label, count, color }) {
   return (
-    <div className="bg-white rounded-xl shadow p-6">
+    <div className="bg-white dark:bg-gray-900 rounded-xl shadow p-6">
       <div className={`w-3 h-3 rounded-full ${color} mb-3`} />
-      <h3 className="text-3xl font-bold">{count}</h3>
-      <p className="text-gray-500 text-sm mt-1">{label}</p>
+      <h3 className="text-3xl font-bold text-gray-900 dark:text-gray-100">{count}</h3>
+      <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">{label}</p>
     </div>
   );
 }
 
 function ActionCard({ title, desc, btn, onClick, color }) {
   return (
-    <div className={`bg-white rounded-xl shadow p-6 border-l-4 ${color}`}>
-      <h3 className="font-semibold text-lg">{title}</h3>
-      <p className="text-gray-500 text-sm mt-1 mb-4">{desc}</p>
+    <div className={`bg-white dark:bg-gray-900 rounded-xl shadow p-6 border-l-4 ${color}`}>
+      <h3 className="font-semibold text-lg text-gray-900 dark:text-gray-100">{title}</h3>
+      <p className="text-gray-500 dark:text-gray-400 text-sm mt-1 mb-4">{desc}</p>
       <button
         onClick={onClick}
         className="bg-green-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-green-700 transition"

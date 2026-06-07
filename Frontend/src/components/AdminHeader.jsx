@@ -12,15 +12,15 @@ export default function AdminHeader({ title = "Admin Panel" }) {
   }
 
   return (
-    <div className="flex justify-between items-center px-8 py-5 bg-white border-b shadow-sm">
+    <div className="flex justify-between items-center px-8 py-5 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm transition-colors">
       <div className="flex items-center gap-2">
         <Shield size={20} className="text-green-600" />
-        <h1 className="text-xl font-semibold text-gray-800">{title}</h1>
+        <h1 className="text-xl font-semibold text-gray-800 dark:text-gray-100">{title}</h1>
       </div>
 
       <button
         onClick={handleLogout}
-        className="flex items-center gap-2 text-sm text-red-500 hover:bg-red-50 px-3 py-2 rounded-lg transition"
+        className="flex items-center gap-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 px-3 py-2 rounded-lg transition"
       >
         <LogOut size={16} />
         Sign out
