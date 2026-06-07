@@ -1,0 +1,68 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# IntelliJ IDEA
+.idea/
+*.iml
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# NetBeans
+nbproject/private/
+build/
+dist/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# Mac OS files
+.DS_Store
+
+# Windows files
+Thumbs.db
+
+# Maven
+target/
+
+# Gradle
+.gradle/
+build/
+
+# Environment files
+.env
+.env.*
+
+# Node modules (if frontend exists)
+node_modules/
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+# Runtime uploads (managed by Docker volume in production)
+Backend/uploads/*
+!Backend/uploads/.gitkeep

@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./Backend
+    image: slot-backend:latest
+    restart: unless-stopped
+    env_file:
+      - ./Backend/.env
+    ports:
+      - "3001:3001"
+    volumes:
+      - backend_uploads:/app/uploads
+
+  frontend:
+    build:
+      context: ./Frontend
+      args:
+        VITE_BACKEND_URL: ${VITE_BACKEND_URL}
+        VITE_RAZORPAY_KEY_ID: ${VITE_RAZORPAY_KEY_ID}
+    image: slot-frontend:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_uploads:
